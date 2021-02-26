@@ -1,0 +1,28 @@
+- Base Choice -
+
+Characteristics and Test Requirements 
+C1 - "Constructor" does not throw NegativeArraySizeException (T/F)
+C2 - "Set" is performed by negating boolean value 0 of specified bit and does not throw IndexOutOfBoundsException (T/F)
+C3 - "Get" returns boolean value of bit and does not throw IndexOutOfBoundsException (T/F)
+C4 - "Flip" negates boolean value of specified bit and does not throw IndexOutOfBoundsException (T/F)
+
+C1 C2 C3 C4
+T  T  T  T test0 - Base Choice
+T  T  T  T subTest0 *
+T  T  T  F test1
+T  T  F  T test2
+T  F  T  T test3
+F  T  T  T test4 *
+F  F  F  F test5
+
+Notes *
+To reduce redundant code, @BeforeEach will be C1 and C2 T,T for each testing method unless testing False.
+
+subTest0 is an extra testing branch of the negation methods. The test is exercising both sides of negation for further assurance. 
+
+Test 4 is an unfesiable tests. During Runtime, if the Constructor has been passed a negative number, it will throw an Exception. In addition to that,
+the state will be null and unable to negate a non null state thus causing Sequential Exceptions.
+
+test5 may be redundant considering we exercised different False State of each Characteristic for each test
+
+
