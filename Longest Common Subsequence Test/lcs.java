@@ -51,6 +51,8 @@ public class lcs {
 		String a = "ABAABA";
 		String b = "BABBAB";
 		System.out.println(lcs(a, b));
+		
+		
 	}
 	
 }
