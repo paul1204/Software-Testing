@@ -4,7 +4,7 @@ O(n^2) Time Complexity
 Nodes 1 through 7 has a runtime of O(n^2)
 Nodes 8 through 12 ..		   O(n)
 
-To reduce text on Control Flow Graph, some edges will represent a key, while the value will be listed in this documentation
+To Make Control Flow Graph more legibile, the Def - Use will be documented here with the respective Nodes on the graph
 
 
 //All Def Uses Definitions will be here,
