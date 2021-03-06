@@ -2,7 +2,7 @@ Testing Documentation for Longest Common Subsequence Algorithm using a Control F
 O(n^2) Time Complexity
 
 Nodes 1 through 7 has a runtime of O(n^2)
-Nodes 8 through 12 ..			   O(n)
+Nodes 8 through 12 ..		   O(n)
 
 To reduce text on Control Flow Graph, some edges will represent a key, while the value will be listed in this documentation
 
@@ -23,7 +23,18 @@ String lcs;
 //Shortcuts
 // n++ is the same as n = (n + 1)
 
+Node 6 represents the Root of a Decision Tree
+If 6 returns Boolean Value 1, then 6a is executed
+If 6 returns Boolean Value 0, then 6b is executed
+*We use j twice in each Conditional Branch
+*One for key value, other for changing value of the key
+*# is to represent a key
 
+Node 7 represents a Transistion from the inner loop to the outer loop by changing index value of the outer loop
+
+Node 10 represents a Root for the Decision Tree
+
+Node 11 represents an organized way for the Decision Tree to loop back to Decision Tree Root
 
 def(1) = {x,y,m,n,opt}
 use(1) = {m,n}
@@ -37,13 +48,6 @@ def(4) = {j}
 use(5) = {j,n}
 
 
-Node 6 represents the Root of a Decision Tree
-If 6 returns Boolean Value 1, then 6a is executed
-If 6 returns Boolean Value 0, then 6b is executed
-*We use j twice in each Conditional Branch
-*One for key value, other for changing value of the key
-*# is to represent a key
-
 use(6) = {x,y,i,j}
 
 def(6a) = {opt[#][#], j}
@@ -52,16 +56,12 @@ use(6a) = {opt,i,j}
 def(6b) = {opt[#][#], j}
 use(6b) = {opt,i,j}
 
-Node 7 represents a Transistion from the inner loop to the outer loop by changing index value of the outer loop
 //def(7) = {i}
 use(7) = {i}
 
-**Refreshing i and j
 def(8) = {lcs, i , j}
 
 use(9) = {i,j,m,n}
-
-Node 10 represents a Root for the Decision Tree
 
 def(10a) = {lcs,i,j}
 use(10a) = {x,y,i,j}
@@ -72,7 +72,7 @@ use(10b) = {opt, i,j}
 def(10c) = {j}
 use(10c) = {j}
 
-Node 11 represents an organized way for the Decision Tree to loop back to Decision Tree Root
+def(11) = {}
+use(11) = {}
 
-Node 12 (Accept State)
-use(12) = {lcs}
+use(12) = {lcs} (Accept State)
