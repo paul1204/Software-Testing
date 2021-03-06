@@ -23,11 +23,14 @@ public class lcs {
 				}
 			}
 		}
+		
 		// Recover LCS itself.
 		String lcs = "";
 		int i = 0, j = 0;
+		int z = opt[m][n];
 		while (i < m && j < n) {
 			if (x.charAt(i) == y.charAt(j)) {
+				System.out.println(x.charAt(i));
 				lcs += x.charAt(i);
 				i++;
 				j++;
@@ -40,12 +43,13 @@ public class lcs {
 			}
 			
 		}
+		
 		return lcs;
 	}
 	
 	public static void main(String[] args) {
-		String a = "GGCACCACG";
-		String b = "ACGGCGGATACG";
+		String a = "ABAABA";
+		String b = "BABBAB";
 		System.out.println(lcs(a, b));
 	}
 	
