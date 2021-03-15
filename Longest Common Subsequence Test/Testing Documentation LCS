@@ -4,31 +4,21 @@ O(n^2) Time Complexity
 Nodes 1 through 7 has a runtime of O(n^2)
 Nodes 8 through 12 ..		   O(n)
 
-To Make Control Flow Graph more legibile, the Def - Use will be documented here with the respective Nodes on the graph
-
-
-//All Def Uses Definitions will be here,
-//Where a is equal to the number
-def(a)
-use(a)
+To Make Control Flow Graph more legibile, the Def - Use labeling will be documented here with the respective Nodes on the graph
 
 //To Represent Types
-String x;
-String y;
-int n;
+String x,y;
+int m,n;
 int[][] opt;
 int i, j;
 String lcs;
-
-//Shortcuts
-// n++ is the same as n = (n + 1)
 
 Node 6 represents the Root of a Decision Tree
 If 6 returns Boolean Value 1, then 6a is executed
 If 6 returns Boolean Value 0, then 6b is executed
 *We use j twice in each Conditional Branch
-*One for key value, other for changing value of the key
-*# is to represent a key
+*One for index, other for changing value of index
+*# is to represent a index
 
 Node 7 represents a Transistion from the inner loop to the outer loop by changing index value of the outer loop
 
@@ -36,8 +26,15 @@ Node 10 represents a Root for the Decision Tree
 
 Node 11 represents an organized way for the Decision Tree to loop back to Decision Tree Root
 
+Def Use Label on CFG
+//All Def Uses Definitions will be here,
+//Where a is equal to the Node
+def(a)
+use(a)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 def(1) = {x,y,m,n,opt}
-use(1) = {m,n}
+use(1) = {m,n,x,y}
 
 def(2) = {i}
 
@@ -56,7 +53,7 @@ use(6a) = {opt,i,j}
 def(6b) = {opt[#][#], j}
 use(6b) = {opt,i,j}
 
-//def(7) = {i}
+def(7) = {i}
 use(7) = {i}
 
 def(8) = {lcs, i , j}
@@ -76,3 +73,61 @@ def(11) = {}
 use(11) = {}
 
 use(12) = {lcs} (Accept State)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+All Def-Use Paths
+
+def-use(x) = {
+      [1,2,3,4,5,6,6a] , [1,2,3,4,5,6,6a,7,8,9,10,10a] , [1,2,3,4,5,6,6b,7,8,9,10,10a]
+}
+
+def-use(y) = {
+      [1,2,3,4,5,6,6a] , [1,2,3,4,5,6,6a,7,8,9,10,10a] , [1,2,3,4,5,6,6b,7,8,9,10,10a]
+}
+
+def-use(i) = {
+index [2,3] , [4,5,6,6a,7,3], [4,5,6,6b,7,3] ,[2,3,4,5,6,6a,7] , [2,3,4,5,6,6b,7] , [4,5,6,6a,7,3,4] , [4,5,6,6b,7,3,4], [1,2,3,8]   
+condition and index in O(n^2) [6,6a,5,7] , [6,6b,5,7]
+condition and index in O(n)   [8,9,10,10a] , [8,9,10,10b]
+}
+
+
+def-use(j) = {
+index  [4,5], [6,6a,5,6], [6,6b,5,6]
+condition and index in O(n^2) [6,6a,5], [6,6b,5], [4,5,6,6a], [4,5,6,6b]
+condition and index in O(n)   [8,9,10,10a], [8,9,10,10b], [8,9,10,10c]
+}
+
+def-use(m) = {
+      [1,2,3] , [3,4,5,6,6a,5,7], [3,4,5,6,6b,5,7], [9,10,10a,11] , [9,10,10b,11] , [9,10,10c,11]
+}
+
+def-use(n) = {
+      [1,2,3,4,5] , [5,6,6a,5], [5,6,6b,5], [9,10,10a,11] , [9,10,10b,11] , [9,10,10c,11]
+}
+
+def-use(opt) = {
+      [1,2,3,4,5,6,6a] , [1,2,3,4,5,6,6b] , [1,2,3,4,5,6,6a,7,8,9,10,1b]
+}
+
+def-use(lcs) = {
+      [8,9,10,10a,11,9] , [8,9,12] 
+}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Reflections
+
+If I followed my intuition and didn't use a structured Test Strategy, I would have wrote more tests than what was written.
+It would geared towards Type checking (ie, making sure an Exception is thrown if an Int was passed for a String),
+
+
+Becuase of all-def-use, I was able to write more structured tests by realizing that the variables in the method are dependent of each other,
+so by testing the most dependent variable which was i and j, I was able to kill multiple stones with fewer stones rather than testing each variable's def-use
+
+
+
+
+
+

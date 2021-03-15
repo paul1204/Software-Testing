@@ -30,7 +30,7 @@ public class lcs {
 		int z = opt[m][n];
 		while (i < m && j < n) {
 			if (x.charAt(i) == y.charAt(j)) {
-				System.out.println(x.charAt(i));
+			//	System.out.println(x.charAt(i));
 				lcs += x.charAt(i);
 				i++;
 				j++;
